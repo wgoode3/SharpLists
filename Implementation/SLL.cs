@@ -9,7 +9,13 @@ namespace SharpLists
     {
 
         private SLNode<T> Head;
-        private int _length = 0;
+        private int _size = 0;
+
+        public int Size {
+            get {
+                return _size;
+            }
+        }
 
         IEnumerator IEnumerable.GetEnumerator ()
         {
@@ -46,14 +52,14 @@ namespace SharpLists
                 runner = runner.Next;
             }
             runner.Next = node;
-            _length++;
+            _size++;
         }
 
         public T this [int index]
         {
             get
             {
-                if (index >= _length)
+                if (index >= _size)
                 {
                     throw new IndexException (index);
                 }
@@ -66,7 +72,7 @@ namespace SharpLists
             }
             set
             {
-                if (index >= _length)
+                if (index >= _size)
                 {
                     throw new IndexException (index);
                 }
