@@ -9,9 +9,10 @@ namespace SharpLists
             SLL<string> list = new SLL<string> ();
             list.Add ("hello");
             list.Add ("world");
-            Console.WriteLine (list);
             list[0] = "jello";
             list.AddFront ("wacky");
+            Console.WriteLine (list);
+            list.RemoveAt(2);
             foreach (var val in list)
             {
                 Console.WriteLine (val);
