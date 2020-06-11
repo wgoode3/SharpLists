@@ -1,24 +1,29 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using SharpLists.Exceptions;
 
 namespace SharpLists
 {
     public class SLL<T> : IEnumerable<T>
     {
+
         private SLNode<T> Head;
         private int _length = 0;
+
         IEnumerator IEnumerable.GetEnumerator ()
         {
             return (IEnumerator) GetEnumerator ();
         }
+
         IEnumerator<T> IEnumerable<T>.GetEnumerator ()
         {
             return (IEnumerator<T>) GetEnumerator ();
         }
-        public SLLEnum<T> GetEnumerator ()
+
+        public SLLEnumumerator<T> GetEnumerator ()
         {
-            return new SLLEnum<T> (Head);
+            return new SLLEnumumerator<T> (Head);
         }
         public void AddFront (T value)
         {
@@ -26,6 +31,7 @@ namespace SharpLists
             node.Next = Head;
             Head = node;
         }
+
         public void Add (T value)
         {
             var node = new SLNode<T> (value);
@@ -49,7 +55,7 @@ namespace SharpLists
             {
                 if (index >= _length)
                 {
-                    throw new IndexError (index);
+                    throw new IndexException (index);
                 }
                 var runner = Head;
                 for (int i = 0; i < index; i++)
@@ -62,7 +68,7 @@ namespace SharpLists
             {
                 if (index >= _length)
                 {
-                    throw new IndexError (index);
+                    throw new IndexException (index);
                 }
                 var runner = Head;
                 for (int i = 0; i < index; i++)
@@ -85,16 +91,20 @@ namespace SharpLists
             result += $"{runner.Value} ]";
             return result;
         }
+
     }
 
-    public class SLLEnum<T> : IEnumerator<T>
+    public class SLLEnumumerator<T> : IEnumerator<T>
     {
+
         public SLNode<T> Head;
         public SLNode<T> Runner;
-        public SLLEnum (SLNode<T> head)
+
+        public SLLEnumumerator (SLNode<T> head)
         {
             Head = head;
         }
+
         public bool MoveNext ()
         {
             if (Runner == null)
@@ -112,6 +122,7 @@ namespace SharpLists
         {
             Runner = null;
         }
+
         public T Current
         {
             get
@@ -126,6 +137,7 @@ namespace SharpLists
                 }
             }
         }
+
         object IEnumerator.Current
         {
             get
@@ -133,6 +145,8 @@ namespace SharpLists
                 return Current;
             }
         }
+
         public void Dispose () { }
+
     }
 }
