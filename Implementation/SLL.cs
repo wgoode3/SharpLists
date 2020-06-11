@@ -64,18 +64,18 @@ namespace SharpLists
 
         /// <summary><para>Removes the first instance of the value from the list</para>
         /// <para>returns true if a value is removed false otherwise</para></summary>
-        public bool Remove(T val)
+        public bool Remove (T val)
         {
             var runner = Head;
-            if(runner.Value.Equals(val))
+            if (runner.Value.Equals (val))
             {
                 Head = Head.Next;
                 _size--;
                 return true;
             }
-            while(runner.Next != null)
+            while (runner.Next != null)
             {
-                if(runner.Next.Value.Equals(val))
+                if (runner.Next.Value.Equals (val))
                 {
                     runner.Next = runner.Next.Next;
                     _size--;
@@ -88,14 +88,14 @@ namespace SharpLists
 
         /// <summary><para>Removes the value at the provided index</para>
         /// <para>returns the value removed</para></summary>
-        public T RemoveAt(int index)
+        public T RemoveAt (int index)
         {
-            T temp = default(T);
-            if(index > _size)
+            T temp = default (T);
+            if (index > _size)
             {
-                throw new IndexException(index);
+                throw new IndexException (index);
             }
-            if(index == 0) 
+            if (index == 0)
             {
                 temp = Head.Value;
                 Head = Head.Next;
@@ -103,7 +103,7 @@ namespace SharpLists
                 return temp;
             }
             var runner = Head;
-            for(int i=1; i<index; i++)
+            for (int i = 1; i < index; i++)
             {
                 runner = runner.Next;
             }

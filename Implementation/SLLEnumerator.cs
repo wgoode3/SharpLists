@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SharpLists
 {
-        public class SLLEnumumerator<T> : IEnumerator<T>
+    public class SLLEnumumerator<T> : IEnumerator<T>
     {
 
         public SLNode<T> Head;

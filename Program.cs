@@ -12,11 +12,13 @@ namespace SharpLists
             list[0] = "jello";
             list.AddFront ("wacky");
             Console.WriteLine (list);
-            list.RemoveAt(2);
+            list.RemoveAt (2);
             foreach (var val in list)
             {
                 Console.WriteLine (val);
             }
+            SLL<int> numbers = new SLL<int> { 1, 2, 4, 5 };
+            Console.WriteLine (numbers);
         }
     }
 }
