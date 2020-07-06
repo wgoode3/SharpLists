@@ -6,7 +6,7 @@ namespace SharpLists
         public T Value;
         public SLNode<T> Next;
 
-        public SLNode (T value)
+        public SLNode(T value)
         {
             Value = value;
         }

@@ -10,12 +10,12 @@ namespace SharpLists
         public SLNode<T> Head;
         public SLNode<T> Runner;
 
-        public SLLEnumumerator (SLNode<T> head)
+        public SLLEnumumerator(SLNode<T> head)
         {
             Head = head;
         }
 
-        public bool MoveNext ()
+        public bool MoveNext()
         {
             if (Runner == null)
             {
@@ -28,7 +28,7 @@ namespace SharpLists
             return Runner != null;
         }
 
-        public void Reset ()
+        public void Reset()
         {
             Runner = null;
         }
@@ -43,7 +43,7 @@ namespace SharpLists
                 }
                 catch (NullReferenceException)
                 {
-                    throw new InvalidOperationException ();
+                    throw new InvalidOperationException();
                 }
             }
         }
@@ -56,7 +56,7 @@ namespace SharpLists
             }
         }
 
-        public void Dispose () { }
+        public void Dispose() { }
 
     }
 }
